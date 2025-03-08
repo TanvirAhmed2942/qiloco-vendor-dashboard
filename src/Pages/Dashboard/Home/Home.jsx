@@ -51,9 +51,11 @@ const Home = () => (
         </div>
       </div>
       <div className="w-full ">
-        <h3 className="text-white text-[24px] font-bold mb-2">
-          Recent Selling Products
-        </h3>
+        <div className="w-full flex items-center justify-between mb-2 text-white">
+          <h3 className=" text-[24px] font-bold">Total Order List</h3>
+          <a className="underline cursor-pointer">See all</a>
+        </div>
+
         <div
           className="h-60 overflow-y-scroll rounded-lg bg-quilocoP [&::-webkit-scrollbar]:w-2
                     [&::-webkit-scrollbar-track]:rounded-full

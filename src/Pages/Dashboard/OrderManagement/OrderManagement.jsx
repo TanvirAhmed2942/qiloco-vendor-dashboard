@@ -281,17 +281,30 @@ function OrderManagement() {
               theme={{
                 components: {
                   Button: {
-                    defaultBg: "transparent",
+                    defaultActiveBorderColor: "none",
+                    defaultHoverBg: "none",
+                    defaultHoverBorderColor: "white",
+                    defaultHoverColor: "white",
+                    defaultActiveBg: "none",
+                    defaultActiveColor: "#a01d25",
+                    defaultShadow: "#a01d25",
                   },
                 },
               }}
             >
-              <Button className="bg-gray-700 text-white px-3 py-1 rounded">
+              <Button
+                className="bg-transparent text-white  rounded-lg"
+                onClick={showModal}
+              >
                 View details
               </Button>
-              <Dropdown overlay={menu} trigger={["click"]}>
+              <Dropdown
+                overlay={menu}
+                trigger={["click"]}
+                className="w-24 rounded-lg"
+              >
                 <Button
-                  className="bg-gray-700 text-white px-3 py-1 rounded "
+                  className="bg-transparent text-white  rounded "
                   icon={<DownOutlined />}
                   iconPosition={"end"}
                 >

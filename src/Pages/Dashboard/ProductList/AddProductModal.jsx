@@ -52,6 +52,7 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
         width={1000}
         onCancel={handleCancel}
         footer={null}
+        centered
       >
         <Form
           form={form}
@@ -72,22 +73,6 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
                 <Input
                   placeholder="Enter your product name"
                   className="bg-black border-none h-12"
-                />
-              </Form.Item>
-
-              <Form.Item
-                label="Product Descriptions"
-                name="productDescription"
-                rules={[
-                  {
-                    required: true,
-                    message: "Product Description required!",
-                  },
-                ]}
-              >
-                <Input.TextArea
-                  placeholder="Write product description"
-                  className="bg-black border-none"
                 />
               </Form.Item>
 
@@ -145,6 +130,26 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
 
             {/* Right Section (Upload) */}
             <div className="w-1/2">
+              <div className="">
+                <Form>
+                  <Form.Item
+                    label="Product Descriptions"
+                    name="productDescription"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Product Description required!",
+                      },
+                    ]}
+                  >
+                    <Input.TextArea
+                      style={{ resize: "none", height: "100px" }} // Ensures it is non-resizable
+                      placeholder="Write product description"
+                      className="bg-black border-none "
+                    />
+                  </Form.Item>
+                </Form>
+              </div>
               <h5 className="text-[18px] text-[#efefef] font-normal mb-1 ">
                 Product Gallery
               </h5>

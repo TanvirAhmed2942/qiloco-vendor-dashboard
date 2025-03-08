@@ -5,12 +5,12 @@ import {
   useReadMutation,
 } from "../../redux/apiSlices/notificationSlice";
 import toast from "react-hot-toast";
-
+import { FaRegBell } from "react-icons/fa";
 const Notifications = () => {
   const [page, setPage] = useState(1);
   const { data: notifications } = useNotificationQuery();
   const [read] = useReadMutation();
-
+  const date = new Date();
   const handleRead = async () => {
     try {
       await read()
@@ -25,12 +25,10 @@ const Notifications = () => {
     }
   };
   return (
-    <div className="px-14 mt-10">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-[22px]">All Notifications</h2>
-        <button className="bg-gtdandy text-white h-10 px-4 rounded-md">
-          Read All
-        </button>
+    <div className="px-4">
+      <div className="flex items-center justify-between mb-3 text-white">
+        <h2 className="text-[22px] ">All Notifications</h2>
+        <button className="bg-gtdandy  h-10 rounded-md">Read All</button>
       </div>
 
       <div className="grid grid-cols-1 gap-5">
@@ -38,23 +36,17 @@ const Notifications = () => {
           return (
             <div
               key={index}
-              className="border-b-[1px] pb-2 border-[#d9d9d9] flex items-center gap-3"
+              className="border-b-[1px] pb-2 border-gray-500 flex items-center gap-3"
             >
-              <img
-                style={{
-                  height: "50px",
-                  width: "50px",
-                  borderRadius: "100%",
-                  border: "2px solid gray",
-                }}
-                src="https://img.freepik.com/free-photo/everything-is-okay-cheerful-friendly-looking-caucasian-guy-with-moustache-beard-raising-hand-with-ok-great-gesture-giving-approval-like-having-situation-control_176420-22386.jpg"
+              <FaRegBell
+                size={50}
+                className="text-quilocoD bg-[#00000033] p-2 rounded-md"
               />
               <div>
-                <p>
-                  <span>Sanchez haro manuel</span> start a new trip at 5pm. Trip
-                  No.56. Trip started from Mexico city
+                <p>Your order is Confirmed. Thank you, shop again!</p>
+                <p style={{ color: "gray", marginTop: "4px" }}>
+                  {date.toLocaleString()}
                 </p>
-                <p style={{ color: "gray", marginTop: "4px" }}>1hr ago</p>
               </div>
             </div>
           );

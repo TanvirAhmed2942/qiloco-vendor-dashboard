@@ -1,50 +1,72 @@
 import React, { useState } from "react";
-import { Table, Avatar, ConfigProvider } from "antd";
+import { Table, Avatar, ConfigProvider, Input } from "antd";
 import { FiPlusCircle } from "react-icons/fi";
 import { IoEye } from "react-icons/io5";
 import AddProductModal from "./AddProductModal";
-function ProductList() {
-  const buttonItem = [
-    { key: "1", title: "All" },
-    { key: "2", title: "Vice City" },
-    { key: "3", title: "Zkittles" },
-  ];
-  const dataSource = rawData.map((item) => ({
-    ...item,
-    serial: `#${item.serial}`,
-  }));
-  const [selected, setSelected] = useState("All");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+import { SearchOutlined } from "@ant-design/icons";
 
-  const filteredData = rawData
-    .filter((item) => selected === "All" || item.filter === selected)
-    .map((item) => ({
-      ...item,
-      serial: `#${item.serial}`,
-    }));
+function ProductList() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const showModal = () => {
     setIsModalOpen(true);
   };
 
+  // Extract searchable fields from columns
+  const searchableFields = columns.map((col) => col.dataIndex);
+
+  // Function to filter data based on searchTerm across table columns only
+  const filteredData = rawData.filter((item) =>
+    searchableFields.some((field) => {
+      if (!item[field]) return false; // Skip if field is empty
+
+      const fieldValue = item[field].toString().toLowerCase();
+      const query = searchTerm.toLowerCase();
+
+      // Special case for serial number (since we prefix with #)
+      if (field === "serial") {
+        return fieldValue.includes(query.replace("#", "")); // Match even if user types without #
+      }
+
+      return fieldValue.includes(query);
+    })
+  );
+
+  const dataSource = filteredData.map((item) => ({
+    ...item,
+    serial: `#${item.serial}`, // Ensure consistent formatting
+  }));
+
   return (
     <div className="px-3 py-4">
-      <div className="text-white flex justify-between">
-        <div className=" flex gap-4 h-12 mb-4">
-          {buttonItem.map((item) => (
-            <button
-              key={item.key}
-              className={`border border-quilocoD w-40 h-full rounded transition-all ${
-                selected.toUpperCase() === item.title.toUpperCase()
-                  ? "bg-quilocoD text-white"
-                  : "bg-transparent"
-              }`}
-              onClick={() => setSelected(item.title)}
-            >
-              {item.title.toUpperCase()}
-            </button>
-          ))}
-        </div>
+      <div className="text-white flex justify-between mb-4">
+        <ConfigProvider
+          theme={{
+            components: {
+              Input: {
+                colorBgBase: "black",
+                colorBgContainer: "black",
+                colorBgBaseHover: "black",
+                activeBg: "black",
+                colorBorder: "transparent",
+                colorPrimaryBorder: "transparent",
+                boxShadow: "none",
+              },
+              Button: {
+                defaultHoverBorderColor: "#a01d25",
+              },
+            },
+          }}
+        >
+          <Input
+            placeholder="Search here..."
+            className="w-1/3 bg-black border-none outline-none text-sm text-slate-300"
+            prefix={<SearchOutlined className="text-[#5e5e5e] text-lg pl-4" />}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </ConfigProvider>
         <button
           className="h-12 flex items-center justify-center gap-4 px-10 bg-quilocoP rounded-lg"
           onClick={showModal}
@@ -65,17 +87,14 @@ function ProductList() {
               rowHoverBg: "#4a4a4a",
               colorText: "white",
             },
+            Button: {
+              defaultBg: "#a01d25",
+            },
           },
         }}
       >
         <div className="custom-table">
-          <Table
-            dataSource={filteredData}
-            columns={columns}
-            pagination={true}
-
-            // rowClassName={() => "bg-gray-700 text-white"}
-          />
+          <Table dataSource={dataSource} columns={columns} pagination={true} />
         </div>
         <AddProductModal
           isModalOpen={isModalOpen}
@@ -92,52 +111,43 @@ const rawData = [
   {
     key: "1",
     serial: "001",
-    productname: "Wireless Mouse",
-    useremail: "mike@example.com",
-    filter: "Vice City",
-    size: "Medium",
-    filtermood: "Work",
-    price: "$25.99",
-    description: "A high-precision wireless mouse with ergonomic design.",
+    productname: "Vice City",
+    filter: "Low",
+    ammount: "$25.99",
+    date: "11 oct 24, 11.10PM",
+    description: "THCa, Legal, Uplifting, High",
   },
   {
     key: "2",
     serial: "002",
-    productname: "Mechanical Keyboard",
-    useremail: "john@example.com",
-    filter: "Zkittles",
-    size: "Full-size",
-    filtermood: "Gaming",
-    price: "$79.99",
-    description: "A mechanical keyboard with RGB backlight and fast response.",
+    productname: "Zkittles",
+    filter: "Medium",
+    ammount: "$79.99",
+    date: "11 oct 24, 11.10PM",
+    description: "THCa, Legal, Uplifting, High",
   },
   {
     key: "3",
     serial: "003",
-    productname: "Mechanical Keyboard",
-    useremail: "john@example.com",
-    filter: "Zkittles",
-    size: "Full-size",
-    filtermood: "Gaming",
-    price: "$79.99",
-    description: "A mechanical keyboard with RGB backlight and fast response.",
+    productname: "Zkittles",
+    filter: "High",
+    ammount: "$79.99",
+    date: "11 oct 24, 11.10PM",
+    description: "THCa, Legal, Uplifting, High",
   },
   {
     key: "4",
     serial: "004",
-    productname: "Mechanical Keyboard",
-    useremail: "john@example.com",
-    filter: "Vice City",
-    size: "Full-size",
-    filtermood: "Gaming",
-    price: "$79.99",
-    description: "A mechanical keyboard with RGB backlight and fast response.",
+    productname: "Vice City",
+    filter: "High",
+    ammount: "$79.99",
+    date: "11 oct 24, 11.10PM",
+    description: "THCa, Legal, Uplifting, High",
   },
 ];
-
 const columns = [
   {
-    title: "Serial",
+    title: "Sl#",
     dataIndex: "serial",
     key: "serial",
   },
@@ -156,21 +166,22 @@ const columns = [
     title: "Filter",
     dataIndex: "filter",
     key: "filter",
+    filters: [
+      { text: "Low", value: "Low" },
+      { text: "Medium", value: "Medium" },
+      { text: "High", value: "High" },
+    ],
+    onFilter: (value, record) => record.filter === value, // Filtering logic
   },
   {
-    title: "Size",
-    dataIndex: "size",
-    key: "size",
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
   },
   {
-    title: "Filter by mood",
-    dataIndex: "filtermood",
-    key: "filtermood",
-  },
-  {
-    title: "Price",
-    dataIndex: "price",
-    key: "price",
+    title: "Ammount",
+    dataIndex: "ammount",
+    key: "ammount",
   },
   {
     title: "Description",
