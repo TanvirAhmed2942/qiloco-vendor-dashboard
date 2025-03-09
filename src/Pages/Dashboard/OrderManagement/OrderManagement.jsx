@@ -254,10 +254,16 @@ function OrderManagement() {
       key: "status",
       render: (status) => {
         let color = "text-white";
-        if (status === "Pending") color = "text-yellow-400";
-        if (status === "Processing") color = "text-red-500";
-        if (status === "Shipped") color = "text-blue-500";
-        if (status === "Delivered") color = "text-green-500";
+        if (status === "Pending")
+          color =
+            "text-yellow-500 border border-yellow-800  rounded-full px-3 py-1";
+        if (status === "Processing")
+          color = "text-red-500 border border-red-800 rounded-full px-3 py-1";
+        if (status === "Shipped")
+          color = "text-blue-500 border border-sky-800 rounded-full px-3 py-1";
+        if (status === "Delivered")
+          color =
+            "text-green-500 border border-green-800 rounded-full px-3 py-1";
 
         return <span className={`${color} font-semibold`}>{status}</span>;
       },
@@ -276,7 +282,7 @@ function OrderManagement() {
         );
 
         return (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 ">
             <ConfigProvider
               theme={{
                 components: {
