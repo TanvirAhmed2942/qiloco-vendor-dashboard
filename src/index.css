@@ -108,6 +108,9 @@ textarea::placeholder {
   background-color: #a11d26 !important;
   color: #ffffff !important;
 }
+.ant-menu .ant-menu-submenu-title {
+  margin-left: 0;
+}
 .ant-menu-light .ant-menu-item-selected a {
   color: white !important;
 }

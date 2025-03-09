@@ -1,11 +1,12 @@
 import { Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { FaHandHoldingDollar } from "react-icons/fa6";
 import { TbBellBolt, TbDashboard, TbListDetails } from "react-icons/tb";
 import { RxDashboard } from "react-icons/rx";
 import { PiWallet } from "react-icons/pi";
 import { FiLogOut, FiUsers } from "react-icons/fi";
+import { FaRegListAlt } from "react-icons/fa";
 import { RiMoneyDollarCircleLine, RiSettings5Line } from "react-icons/ri";
 import qilocoLogo from "../../assets/quiloco/qilocoLogo.png";
 import { LuBoxes } from "react-icons/lu";
@@ -61,13 +62,13 @@ const Sidebar = ({ isCollapsed }) => {
     },
     {
       key: "subMenuSetting1",
-      icon: <RiSettings5Line size={23} />,
+      icon: <RiSettings5Line size={25} />,
       label: isCollapsed ? null : "Settings",
       children: isCollapsed
-        ? []
-        : [
+        ? [
             {
               key: "/return-policy",
+              icon: <FaHandHoldingDollar size={24} />,
               label: (
                 <Link to="/return-policy" className="text-white">
                   Return Policy
@@ -76,6 +77,27 @@ const Sidebar = ({ isCollapsed }) => {
             },
             {
               key: "/privacy-policy",
+              icon: <FaRegListAlt size={24} />,
+              label: (
+                <Link to="/privacy-policy" className="text-white">
+                  Privacy Policy
+                </Link>
+              ),
+            },
+          ]
+        : [
+            {
+              key: "/return-policy",
+              icon: <FaHandHoldingDollar size={24} />,
+              label: (
+                <Link to="/return-policy" className="text-white">
+                  Return Policy
+                </Link>
+              ),
+            },
+            {
+              key: "/privacy-policy",
+              icon: <FaRegListAlt size={24} />,
               label: (
                 <Link to="/privacy-policy" className="text-white">
                   Privacy Policy

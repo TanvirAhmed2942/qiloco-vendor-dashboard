@@ -3,7 +3,7 @@ import JoditEditor from "jodit-react";
 
 function ReturnPolicy() {
   const editor = useRef(null);
-  const [content, setContent] = useState("Return Policy");
+  const [content, setContent] = useState("");
 
   const handleUpdate = (newContent) => {
     setContent(newContent);
