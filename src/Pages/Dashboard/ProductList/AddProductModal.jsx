@@ -40,7 +40,13 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
             hoverBorderColor: "grey",
           },
           Input: {
-            hoverBg: "black",
+            colorBgBase: "black",
+            colorBgContainer: "black",
+            colorBgBaseHover: "black",
+            activeBg: "black",
+            colorBorder: "transparent",
+            colorPrimaryBorder: "transparent",
+            boxShadow: "none",
           },
         },
       }}
@@ -72,7 +78,7 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
               >
                 <Input
                   placeholder="Enter your product name"
-                  className="bg-black border-none h-12"
+                  className="bg-black border-none h-12 text-slate-300"
                 />
               </Form.Item>
 
@@ -83,7 +89,7 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
               >
                 <Input
                   placeholder="High"
-                  className="bg-black border-none h-12"
+                  className="bg-black border-none h-12 text-slate-300"
                 />
               </Form.Item>
 
@@ -116,46 +122,52 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
               >
                 <Input
                   placeholder="Enter your product price"
-                  className="bg-black border-none h-12"
+                  className="bg-black border-none h-12 text-slate-300"
                 />
               </Form.Item>
 
               <Form.Item label="Size (Optional)" name="productSize">
                 <Input
                   placeholder="1kg"
-                  className="bg-black border-none h-12"
+                  className="bg-black border-none h-12 text-slate-300"
                 />
               </Form.Item>
             </div>
 
             {/* Right Section (Upload) */}
-            <div className="w-1/2">
-              <div className="">
-                <Form>
-                  <Form.Item
-                    label="Product Descriptions"
-                    name="productDescription"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Product Description required!",
-                      },
-                    ]}
-                  >
-                    <Input.TextArea
-                      style={{ resize: "none", height: "100px" }} // Ensures it is non-resizable
-                      placeholder="Write product description"
-                      className="bg-black border-none "
-                    />
-                  </Form.Item>
-                </Form>
-              </div>
-              <h5 className="text-[18px] text-[#efefef] font-normal mb-1 ">
-                Product Gallery
-              </h5>
-              <UploadComponent onFileUpload={setUploadedFiles} />
-              {/* Receive uploaded images */}
+            <div className="w-1/2 flex flex-col ">
+              <Form.Item
+                label="Product Descriptions"
+                name="productDescription"
+                rules={[
+                  {
+                    required: true,
+                    message: "Product Description required!",
+                  },
+                ]}
+              >
+                <Input.TextArea
+                  style={{ resize: "none", height: "175px" }} // Ensures it is non-resizable
+                  placeholder="Write product description"
+                  className="border-none text-slate-300"
+                />
+              </Form.Item>
+
+              <Form.Item
+                label="Product Gallery"
+                name="productImage"
+                rules={[
+                  {
+                    required: true,
+                    message: "Product Image required!",
+                  },
+                ]}
+              >
+                <UploadComponent onFileUpload={setUploadedFiles} />
+              </Form.Item>
             </div>
+
+            {/* Receive uploaded images */}
           </div>
 
           {/* Full-Width Submit Button */}
