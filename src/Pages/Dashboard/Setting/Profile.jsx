@@ -57,13 +57,20 @@ function Profile() {
           <div className="w-full flex justify-end">
             <Button
               onClick={() => setShowButton(!showButton)}
-              icon={<HiMiniPencil size={20} className="text-white" />}
+              icon={
+                showButton ? null : (
+                  <HiMiniPencil size={20} className="text-white" />
+                )
+              }
               className="bg-quilocoD/80 border-none text-white min-w-20 min-h-8 text-xs rounded-lg"
             >
-              Edit Profile
+              {showButton ? "Cancel" : "Edit Profile"}
             </Button>
           </div>
-          <ProfileDetails showButton={showButton} />
+          <ProfileDetails
+            showButton={showButton}
+            setShowButton={setShowButton}
+          />
         </div>
       </ConfigProvider>
     </>
@@ -72,7 +79,7 @@ function Profile() {
 
 export default Profile;
 
-const ProfileDetails = ({ showButton }) => {
+const ProfileDetails = ({ showButton, setShowButton }) => {
   return (
     <ConfigProvider
       theme={{
@@ -141,6 +148,7 @@ const ProfileDetails = ({ showButton }) => {
           <Form.Item>
             <Button
               block
+              onClick={() => setShowButton(false)}
               className="bg-quilocoD/80 border-none text-white min-w-20 min-h-10 text-xs rounded-lg"
             >
               Save Changes

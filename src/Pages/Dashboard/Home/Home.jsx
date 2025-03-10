@@ -4,12 +4,19 @@ import MonthlySale from "./MonthlySale";
 import RerecentSellingProduct from "./RerecentSellingProduct";
 import { LiaUsersSolid } from "react-icons/lia";
 import { PiCurrencyCircleDollarBold } from "react-icons/pi";
+import { FaBoxOpen, FaCannabis } from "react-icons/fa6";
 
 const stats = [
   {
-    label: "Total User",
+    label: "Total Sell",
     value: "518",
-    icon: <LiaUsersSolid size={60} className="text-white" />,
+    icon: <FaCannabis size={60} className="text-white" />,
+    bg: "bg-quilocoS",
+  },
+  {
+    label: "Total Order",
+    value: "518",
+    icon: <FaBoxOpen size={60} className="text-white" />,
     bg: "bg-quilocoS",
   },
   {
