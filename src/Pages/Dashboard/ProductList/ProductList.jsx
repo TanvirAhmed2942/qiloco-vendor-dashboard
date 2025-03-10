@@ -122,92 +122,124 @@ export default ProductList;
 
 const rawData = [
   {
-    key: "1",
-    serial: "001",
-    productname: "Vice City OG",
-    filter: "Low",
-    ammount: "$29.99",
-    date: "12 Mar 25, 10:30 AM",
-    description: "THCa, Citrus, Relaxing, Euphoric",
-    productimg:
-      "https://wpcdn.web.wsu.edu/news/uploads/sites/2797/2018/04/medical-marijuana.jpg",
-  },
-  {
-    key: "2",
-    serial: "002",
-    productname: "Purple Haze",
-    filter: "Medium",
-    ammount: "$65.50",
-    date: "10 Mar 25, 08:15 PM",
-    description: "Sativa, Energizing, Berry Aroma",
-    productimg:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4tCHsL3YYsC9qQSZhrqRBfecifG1lVu8x9g&s",
-  },
-  {
-    key: "3",
-    serial: "003",
-    productname: "Zkittlez Kush",
-    filter: "High",
-    ammount: "$85.99",
-    date: "09 Mar 25, 04:45 PM",
-    description: "Indica, Relaxing, Fruity, THC 22%",
-    productimg:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTfAsm7W7szz1BK17clO2ulWMaohk06eJDcw&s",
-  },
-  {
-    key: "4",
-    serial: "004",
-    productname: "Blue Dream",
-    filter: "Medium",
-    ammount: "$72.00",
-    date: "11 Mar 25, 02:00 PM",
-    description: "Hybrid, Creative, Mildly Sedative",
-    productimg:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbX1mfPAINkcuYCG7HcNZfWvnAXCs6d8vFZw&s",
+    key: "6",
+    serial: "006",
+    productName: "Gelato 33",
+    productPotency: "Medium",
+    productPrice: "$38.99",
+    productGenetics: "Hybrid",
+    productOrigin: "California",
+    productType: "Hybrid",
+    productScent: "Dessert-like Flavor",
+    createdAt: "07 Mar 25, 09:00 AM",
+    productDescription: "Hybrid, Dessert-like Flavor, THC 19%",
+    productImg:
+      "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/1820B/production/_106472889_hi051939557.jpg",
   },
   {
     key: "5",
     serial: "005",
-    productname: "Sour Diesel",
-    filter: "High",
-    ammount: "$99.99",
-    date: "08 Mar 25, 06:30 PM",
-    description: "Sativa, Uplifting, Strong Aroma",
-    productimg:
+    productName: "Sour Diesel",
+    productPotency: "High",
+    productPrice: "$44.99",
+    productGenetics: "Sativa Dominant",
+    productOrigin: "Oregon",
+    productType: "Flower",
+    productScent: "Strong Aroma",
+    createdAt: "08 Mar 25, 06:30 PM",
+    productDescription: "Sativa, Uplifting, Strong Aroma",
+    productImg:
       "https://upload.wikimedia.org/wikipedia/commons/1/1d/Macro_cannabis_bud.jpg",
   },
   {
-    key: "6",
-    serial: "006",
-    productname: "Gelato 33",
-    filter: "Low",
-    ammount: "$40.00",
-    date: "07 Mar 25, 09:00 AM",
-    description: "Hybrid, Dessert-like Flavor, THC 19%",
-    productimg:
-      "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/1820B/production/_106472889_hi051939557.jpg",
-  },
-  {
-    key: "7",
-    serial: "007",
-    productname: "Granddaddy Purple",
-    filter: "High",
-    ammount: "$89.99",
-    date: "06 Mar 25, 05:45 PM",
-    description: "Indica, Deep Relaxation, Grape Aroma",
-    productimg:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTntfv0JVxRPpJHoLJfQMvw1Sxfdb0xTJtDFw&s",
+    key: "2",
+    serial: "002",
+    productName: "Purple Haze",
+    productPotency: "High",
+    productPrice: "$39.99",
+    productGenetics: "Sativa Dominant",
+    productOrigin: "Colombia",
+    productType: "Flower",
+    productScent: "Berry Aroma",
+    createdAt: "10 Mar 25, 08:15 PM",
+    productDescription: "Sativa, Energizing, Berry Aroma",
+    productImg:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4tCHsL3YYsC9qQSZhrqRBfecifG1lVu8x9g&s",
   },
   {
     key: "8",
     serial: "008",
-    productname: "Lemon Skunk",
-    filter: "Medium",
-    ammount: "$59.50",
-    date: "05 Mar 25, 01:10 PM",
-    description: "Sativa, Citrus, Uplifting High",
-    productimg:
+    productName: "Lemon Skunk",
+    productPotency: "Medium",
+    productPrice: "$33.99",
+    productGenetics: "Sativa Dominant",
+    productOrigin: "Mexico",
+    productType: "Sativa",
+    productScent: "Citrus, Skunky",
+    createdAt: "05 Mar 25, 01:10 PM",
+    productDescription: "Sativa, Citrus, Uplifting High",
+    productImg:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqwUxhkASQTeYfvjWKfzycjxZuVY3fgvHxcg&s",
+  },
+  {
+    key: "4",
+    serial: "004",
+    productName: "Blue Dream",
+    productPotency: "Medium",
+    productPrice: "$36.99",
+    productGenetics: "Hybrid",
+    productOrigin: "USA",
+    productType: "Hybrid",
+    productScent: "Sweet",
+    createdAt: "11 Mar 25, 02:00 PM",
+    productDescription: "Hybrid, Creative, Mildly Sedative",
+    productImg:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbX1mfPAINkcuYCG7HcNZfWvnAXCs6d8vFZw&s",
+  },
+  {
+    key: "1",
+    serial: "001",
+    productName: "Vice City OG",
+    productPotency: "Medium",
+    productPrice: "$34.99",
+    productGenetics: "Indica Dominant",
+    productOrigin: "USA",
+    productType: "Flower",
+    productScent: "Citrusy",
+    createdAt: "12 Mar 25, 10:30 AM",
+    productDescription: "THCa, Citrus, Relaxing, Euphoric",
+    productImg:
+      "https://wpcdn.web.wsu.edu/news/uploads/sites/2797/2018/04/medical-marijuana.jpg",
+  },
+  {
+    key: "3",
+    serial: "003",
+    productName: "Zkittlez Kush",
+    productPotency: "High",
+    productPrice: "$42.99",
+    productGenetics: "Hybrid",
+    productOrigin: "California",
+    productType: "Hybrid",
+    productScent: "Fruity",
+    createdAt: "09 Mar 25, 04:45 PM",
+    productDescription: "Indica, Relaxing, Fruity, THC 22%",
+    productImg:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTfAsm7W7szz1BK17clO2ulWMaohk06eJDcw&s",
+  },
+  {
+    key: "7",
+    serial: "007",
+    productName: "Granddaddy Purple",
+    productPotency: "Medium",
+    productPrice: "$41.99",
+    productGenetics: "Indica Dominant",
+    productOrigin: "California",
+    productType: "Indica",
+    productScent: "Grape Aroma",
+    createdAt: "06 Mar 25, 05:45 PM",
+    productDescription: "Indica, Deep Relaxation, Grape Aroma",
+    productImg:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTntfv0JVxRPpJHoLJfQMvw1Sxfdb0xTJtDFw&s",
   },
 ];
 
@@ -219,30 +251,30 @@ const columns = (showDetailsModal) => [
   },
   {
     title: "Product Name",
-    dataIndex: "productname",
-    key: "productname",
+    dataIndex: "productName",
+    key: "productName",
     render: (_, record) => {
       return (
         <div className="flex items-center gap-2">
           <Avatar
             shape="square"
             size="default"
-            src={record.productimg}
-            alt={record.productname}
+            src={record.productImg}
+            alt={record.productName}
             onError={(e) => {
-              console.error("Image failed to load:", record.productimg);
+              console.error("Image failed to load:", record.productImg);
               e.target.src = "https://via.placeholder.com/50";
             }}
           />
-          <span>{record.productname}</span>
+          <span>{record.productName}</span>
         </div>
       );
     },
   },
   {
-    title: "Filter",
-    dataIndex: "filter",
-    key: "filter",
+    title: "Potency",
+    dataIndex: "productPotency",
+    key: "productPotency",
     filters: [
       { text: "Low", value: "Low" },
       { text: "Medium", value: "Medium" },
@@ -250,20 +282,41 @@ const columns = (showDetailsModal) => [
     ],
     onFilter: (value, record) => record.filter === value,
   },
+
   {
-    title: "Date",
-    dataIndex: "date",
-    key: "date",
+    title: "Price",
+    dataIndex: "productPrice",
+    key: "productPrice",
   },
   {
-    title: "Ammount",
-    dataIndex: "ammount",
-    key: "ammount",
+    title: "Generics",
+    dataIndex: "productGenetics",
+    key: "productGenetics",
+  },
+  {
+    title: "Origin",
+    dataIndex: "productOrigin",
+    key: "productOrigin",
+  },
+  {
+    title: "Type",
+    dataIndex: "productType",
+    key: "productType",
+  },
+  {
+    title: "Scent",
+    dataIndex: "productScent",
+    key: "productScent",
   },
   {
     title: "Description",
-    dataIndex: "description",
-    key: "description",
+    dataIndex: "productDescription",
+    key: "productDescription",
+  },
+  {
+    title: "Created At",
+    dataIndex: "createdAt",
+    key: "createdAt",
   },
   {
     title: "Details",

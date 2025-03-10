@@ -84,60 +84,45 @@ function ProdductDetailsModal({ isModalOpen, setIsModalOpen, record }) {
           <div className="flex justify-center items-start gap-10 pr-28 text-white">
             <img
               alt="Product Image"
-              src={record?.productimg}
+              src={record?.productImg}
               className="w-40 h-28 rounded-lg border-2"
             />
             <div className="w-80">
-              <h3 className="text-3xl font-semibold">{record?.productname}</h3>
+              <h3 className="text-3xl font-semibold">{record?.productName}</h3>
               <h3 className="text-lg font-medium text-yellow-500">
-                {record?.ammount}
+                {record?.productPrice}
               </h3>
               <div className="flex flex-col gap-2 w-full">
                 <p className="w-full flex items-start gap-32 bg-[#121315] rounded-md py-1 px-1.5">
-                  Type
+                  Potency
                   <p>
-                    :
-                    <span className="ml-2">
-                      Sapiente doloremque vitae saepe commodi provident cumque.
-                    </span>
+                    :<span className="ml-2">{record?.productPotency}</span>
                   </p>
                 </p>
                 <p className="w-full flex items-start gap-32 bg-[#121315] rounded-md py-1 px-1.5">
-                  Type
+                  Genetics
                   <p>
-                    :
-                    <span className="ml-2">
-                      Sapiente doloremque vitae saepe commodi provident cumque.
-                    </span>
+                    :<span className="ml-2">{record?.productGenetics}</span>
+                  </p>
+                </p>
+
+                <p className="w-full flex items-start gap-32 bg-[#121315] rounded-md py-1 px-1.5">
+                  Origin
+                  <p>
+                    :<span className="ml-2">{record?.productOrigin}</span>
                   </p>
                 </p>
 
                 <p className="w-full flex items-start gap-32 bg-[#121315] rounded-md py-1 px-1.5">
                   Type
                   <p>
-                    :
-                    <span className="ml-2">
-                      Sapiente doloremque vitae saepe commodi provident cumque.
-                    </span>
-                  </p>
-                </p>
-
-                <p className="w-full flex items-start gap-32 bg-[#121315] rounded-md py-1 px-1.5">
-                  Type
-                  <p>
-                    :
-                    <span className="ml-2">
-                      Sapiente doloremque vitae saepe commodi provident cumque.
-                    </span>
+                    :<span className="ml-2">{record?.productType}</span>
                   </p>
                 </p>
                 <p className="w-full flex items-start gap-32 bg-[#121315] rounded-md py-1 px-1.5">
-                  Type
+                  Scent
                   <p>
-                    :
-                    <span className="ml-2">
-                      Sapiente doloremque vitae saepe commodi provident cumque.
-                    </span>
+                    :<span className="ml-2">{record?.productScent}</span>
                   </p>
                 </p>
                 <Button className="w-1/2 h-5">Buy now</Button>
