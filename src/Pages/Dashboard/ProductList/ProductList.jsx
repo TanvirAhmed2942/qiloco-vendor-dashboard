@@ -4,6 +4,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import { IoEye } from "react-icons/io5";
 import AddProductModal from "./AddProductModal";
 import { SearchOutlined } from "@ant-design/icons";
+
 import ProdductDetailsModal from "./ProdductDetailsModal";
 
 function ProductList() {
@@ -11,6 +12,8 @@ function ProductList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+
+  const [products, setProducts] = useState(rawData); // State to hold the product list
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -25,7 +28,7 @@ function ProductList() {
     (col) => col.dataIndex
   );
 
-  const filteredData = rawData.filter((item) =>
+  const filteredData = products.filter((item) =>
     searchableFields.some((field) => {
       if (!item[field]) return false;
       const fieldValue = item[field].toString().toLowerCase();
@@ -41,6 +44,11 @@ function ProductList() {
     ...item,
     serial: `#${item.serial}`,
   }));
+
+  const addProduct = (newProduct) => {
+    // Adding new product to the state (and updating the table instantly)
+    setProducts((prevProducts) => [...prevProducts, newProduct]);
+  };
 
   return (
     <div className="px-3 py-4">
@@ -107,6 +115,7 @@ function ProductList() {
         <AddProductModal
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
+          addProduct={addProduct} // Passing the addProduct function to the modal
         />
         <ProdductDetailsModal
           isModalOpen={isDetailsModalOpen}

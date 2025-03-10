@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Modal, Form, Input, Select, Button, ConfigProvider } from "antd";
+import { Modal, Form, Input, Button, ConfigProvider } from "antd";
 import UploadComponent from "./UploadComponent";
 
-function AddProductModal({ isModalOpen, setIsModalOpen }) {
+function AddProductModal({ isModalOpen, setIsModalOpen, addProduct }) {
   const [form] = Form.useForm();
-  const [uploadedFiles, setUploadedFiles] = useState([]); // Store uploaded images
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -15,7 +15,15 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
   };
 
   const onFinish = (values) => {
-    console.log("Form Data:", { ...values, images: uploadedFiles }); // Include images in form data
+    // Form values and uploaded files
+    const newProduct = {
+      ...values,
+      images: uploadedFiles,
+      key: Date.now().toString(),
+    };
+    addProduct(newProduct); // Passing the new product to the parent component
+    form.resetFields(); // Reset the form fields after submission
+    setIsModalOpen(false); // Close the modal
   };
 
   return (
@@ -30,14 +38,6 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
           },
           Form: {
             labelColor: "#efefef",
-          },
-          Select: {
-            selectorBg: "black",
-            activeOutlineColor: "grey",
-            optionSelectedBg: "grey",
-            multipleItemBorderColor: "grey",
-            activeBorderColor: "grey",
-            hoverBorderColor: "grey",
           },
           Input: {
             colorBgBase: "black",
@@ -67,10 +67,8 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
           style={{ padding: 5, marginBlockStart: 15 }}
           onFinish={onFinish}
         >
-          {/* Two Sections Side by Side */}
           <div className="flex gap-4">
-            {/* Left Section */}
-            <div className="w-1/2 bg-transparent  rounded-md">
+            <div className="w-1/2">
               <Form.Item
                 label="Product Name"
                 name="productName"
@@ -81,17 +79,6 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
                   className="bg-black border-none h-12 text-slate-300"
                 />
               </Form.Item>
-
-              {/* <Form.Item
-                label="Filter"
-                name="filter"
-                rules={[{ required: true, message: "Filter required!" }]}
-              >
-                <Input
-                  placeholder="High"
-                  className="bg-black border-none h-12 text-slate-300"
-                />
-              </Form.Item> */}
 
               <Form.Item
                 label="Potency"
@@ -114,28 +101,6 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
                   className="bg-black border-none h-12 text-slate-300"
                 />
               </Form.Item>
-
-              {/* <Form.Item
-                name="filterMood"
-                label="Filter by mood [Tag]"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please select Tags",
-                    type: "array",
-                  },
-                ]}
-              >
-                <Select mode="multiple" placeholder="[Tag]">
-                  <Select.Option value="Chill">Chill</Select.Option>
-                  <Select.Option value="Soothing">Soothing</Select.Option>
-                  <Select.Option value="Euphoric">Euphoric</Select.Option>
-                  <Select.Option value="Creative">Creative</Select.Option>
-                  <Select.Option value="Happy">Happy</Select.Option>
-                  <Select.Option value="Sad">Sad</Select.Option>
-                  <Select.Option value="Medium">Medium</Select.Option>
-                </Select>
-              </Form.Item> */}
 
               <Form.Item
                 label="Origin"
@@ -169,37 +134,43 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
               </Form.Item>
             </div>
 
-            {/* Right Section (Upload) */}
-            <div className="w-1/2 flex flex-col ">
+            <div className="w-1/2">
               <Form.Item
                 label="Product Price"
                 name="productPrice"
-                rules={[{ required: true, message: "Product Price required!" }]}
+                rules={[
+                  {
+                    required: true,
+                    message: "Product Price required!",
+                  },
+                ]}
               >
                 <Input
                   placeholder="Enter your product Price"
                   className="bg-black border-none h-12 text-slate-300"
+                  onInput={(e) => {
+                    // Only allow numeric input (including decimal point)
+                    e.target.value = e.target.value.replace(/[^0-9.]/g, "");
+                  }}
                 />
               </Form.Item>
+
               <Form.Item
                 label="Product Descriptions"
                 name="productDescription"
                 rules={[
-                  {
-                    required: true,
-                    message: "Product Description required!",
-                  },
+                  { required: true, message: "Product Description required!" },
                 ]}
               >
                 <Input.TextArea
+                  placeholder="Write your product Description"
+                  className="border-none text-slate-300"
                   style={{
                     resize: "none",
                     height: "175px",
                     overflowY: "scroll",
                     scrollbarWidth: "none",
-                  }} // Ensures it is non-resizable
-                  placeholder="Write your product Description"
-                  className="border-none text-slate-300"
+                  }}
                 />
               </Form.Item>
 
@@ -208,7 +179,7 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
                 name="productImage"
                 rules={[
                   {
-                    required: true,
+                    required: uploadedFiles.length === 0, // Make image required only if no image is uploaded
                     message: "Product Image required!",
                   },
                 ]}
@@ -216,16 +187,12 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
                 <UploadComponent onFileUpload={setUploadedFiles} />
               </Form.Item>
             </div>
-
-            {/* Receive uploaded images */}
           </div>
 
-          {/* Full-Width Submit Button */}
-          <Form.Item className="">
+          <Form.Item>
             <button
-              type="primary"
-              htmlType="submit"
-              className="w-full h-12 bg-quilocoD hover:bg-quilocoD/90 text-white text-[18px] font-medium rounded-lg "
+              type="submit"
+              className="w-full h-12 bg-quilocoD hover:bg-quilocoD/90 text-white text-[18px] font-medium rounded-lg"
             >
               Submit
             </button>
