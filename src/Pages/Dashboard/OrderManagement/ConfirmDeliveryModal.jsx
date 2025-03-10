@@ -58,7 +58,7 @@ function ConfirmDeliveryModal({ isModalOpen, setIsModalOpen }) {
       }}
     >
       <Modal
-        title="Confirm Deliver Details"
+        title="Confirm Delivery Details"
         open={isModalOpen}
         onOk={handleOk}
         width={1000}

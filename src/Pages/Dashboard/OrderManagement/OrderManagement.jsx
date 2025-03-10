@@ -256,14 +256,16 @@ function OrderManagement() {
         let color = "text-white";
         if (status === "Pending")
           color =
-            "text-yellow-500 border border-yellow-800  rounded-full px-3 py-1";
+            "text-yellow-400 border border-yellow-400 bg-yellow-950  font-[300] text-[14px]  rounded-lg px-3 py-1";
         if (status === "Processing")
-          color = "text-red-500 border border-red-800 rounded-full px-3 py-1";
+          color =
+            "text-red-400 border border-red-400  bg-red-950 font-[300] text-[14px]  rounded-lg px-3 py-1";
         if (status === "Shipped")
-          color = "text-blue-500 border border-sky-800 rounded-full px-3 py-1";
+          color =
+            "text-sky-400 border border-sky-400 bg-sky-950 font-[300] text-[14px]  rounded-lg px-3 py-1";
         if (status === "Delivered")
           color =
-            "text-green-500 border border-green-800 rounded-full px-3 py-1";
+            "text-teal-400 border border-teal-400 bg-teal-950 font-[300] text-[14px]  rounded-lg px-3 py-1";
 
         return <span className={`${color} font-semibold`}>{status}</span>;
       },
