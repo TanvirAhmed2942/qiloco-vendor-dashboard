@@ -11,6 +11,7 @@ const rawData = [
     useremail: "mike@example.com",
     date: "2025-02-24",
     amount: "$25.99",
+    payment: "paid",
     pic: productImg, // Example image for all
   },
   {
@@ -20,6 +21,7 @@ const rawData = [
     useremail: "john@example.com",
     date: "2025-02-23",
     amount: "$79.99",
+    payment: "pending",
     pic: productImg,
   },
   {
@@ -29,6 +31,7 @@ const rawData = [
     useremail: "sara@example.com",
     date: "2025-02-22",
     amount: "$59.99",
+    payment: "pending",
     pic: productImg,
   },
   {
@@ -38,6 +41,7 @@ const rawData = [
     useremail: "dave@example.com",
     date: "2025-02-21",
     amount: "$39.99",
+    payment: "paid",
     pic: productImg,
   },
   {
@@ -47,6 +51,7 @@ const rawData = [
     useremail: "emma@example.com",
     date: "2025-02-20",
     amount: "$49.99",
+    payment: "pending",
     pic: productImg,
   },
 ];
@@ -90,6 +95,17 @@ const columns = [
     key: "amount",
   },
   {
+    title: "Payment",
+    dataIndex: "payment",
+    key: "payment",
+    render: (_, record) =>
+      record.payment === "paid" ? (
+        <span className="text-green-500">Paid</span>
+      ) : (
+        <span className="text-yellow-500">Pending</span>
+      ),
+  },
+  {
     title: "Action",
     key: "action",
     render: () => (
@@ -100,7 +116,7 @@ const columns = [
   },
 ];
 
-function RecentSellingProduct() {
+function TotalOrderList() {
   return (
     <ConfigProvider
       theme={{
@@ -122,4 +138,4 @@ function RecentSellingProduct() {
   );
 }
 
-export default RecentSellingProduct;
+export default TotalOrderList;

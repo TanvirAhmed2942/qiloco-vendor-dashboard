@@ -3,11 +3,12 @@ import { ConfigProvider, Pagination } from "antd";
 import {
   useNotificationQuery,
   useReadMutation,
-} from "../../redux/apiSlices/notificationSlice";
+} from "../../../redux/apiSlices/notificationSlice";
 import toast from "react-hot-toast";
 import { FaRegBell } from "react-icons/fa";
 const Notifications = () => {
   const [page, setPage] = useState(1);
+
   const { data: notifications } = useNotificationQuery();
   const [read] = useReadMutation();
   const date = new Date();
@@ -24,11 +25,14 @@ const Notifications = () => {
       toast.error(error?.data?.message);
     }
   };
+
   return (
     <div className="px-4">
       <div className="flex items-center justify-between mb-3 text-white">
         <h2 className="text-[22px] ">All Notifications</h2>
-        <button className="bg-gtdandy  h-10 rounded-md">Read All</button>
+        <button className="bg-gtdandy  h-10 rounded-md" onClick={handleRead}>
+          Read All
+        </button>
       </div>
 
       <div className="grid grid-cols-1 gap-5">

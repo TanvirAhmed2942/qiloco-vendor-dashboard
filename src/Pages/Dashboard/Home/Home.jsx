@@ -1,10 +1,9 @@
 import React from "react";
 import EarningOverview from "./EarningOverview";
 import MonthlySale from "./MonthlySale";
-import RerecentSellingProduct from "./RerecentSellingProduct";
-import { LiaUsersSolid } from "react-icons/lia";
 import { PiCurrencyCircleDollarBold } from "react-icons/pi";
 import { FaBoxOpen, FaCannabis } from "react-icons/fa6";
+import TotalOrderList from "./TotalOrderList";
 
 const stats = [
   {
@@ -72,7 +71,7 @@ const Home = () => (
                     dark:[&::-webkit-scrollbar-track]:bg-neutral-700
                     dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
         >
-          <RerecentSellingProduct />
+          <TotalOrderList />
         </div>
       </div>
     </div>
