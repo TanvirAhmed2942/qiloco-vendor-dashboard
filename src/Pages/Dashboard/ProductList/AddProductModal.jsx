@@ -77,12 +77,12 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
                 rules={[{ required: true, message: "Product Name required!" }]}
               >
                 <Input
-                  placeholder="Enter your product name"
+                  placeholder="Enter your product Name"
                   className="bg-black border-none h-12 text-slate-300"
                 />
               </Form.Item>
 
-              <Form.Item
+              {/* <Form.Item
                 label="Filter"
                 name="filter"
                 rules={[{ required: true, message: "Filter required!" }]}
@@ -91,9 +91,31 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
                   placeholder="High"
                   className="bg-black border-none h-12 text-slate-300"
                 />
+              </Form.Item> */}
+
+              <Form.Item
+                label="Potency"
+                name="productPotency"
+                rules={[{ required: true, message: "Potency required!" }]}
+              >
+                <Input
+                  placeholder="Enter Product Potency"
+                  className="bg-black border-none h-12 text-slate-300"
+                />
               </Form.Item>
 
               <Form.Item
+                label="Genetics"
+                name="productGenetics"
+                rules={[{ required: true, message: "Genetics required!" }]}
+              >
+                <Input
+                  placeholder="Enter Product Genetics"
+                  className="bg-black border-none h-12 text-slate-300"
+                />
+              </Form.Item>
+
+              {/* <Form.Item
                 name="filterMood"
                 label="Filter by mood [Tag]"
                 rules={[
@@ -113,22 +135,35 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
                   <Select.Option value="Sad">Sad</Select.Option>
                   <Select.Option value="Medium">Medium</Select.Option>
                 </Select>
-              </Form.Item>
+              </Form.Item> */}
 
               <Form.Item
-                label="Price"
-                name="productPrice"
-                rules={[{ required: true, message: "Product Price required!" }]}
+                label="Origin"
+                name="productOrigin"
+                rules={[
+                  { required: true, message: "Product Origin required!" },
+                ]}
               >
                 <Input
-                  placeholder="Enter your product price"
+                  placeholder="Enter your product Origin"
                   className="bg-black border-none h-12 text-slate-300"
                 />
               </Form.Item>
 
-              <Form.Item label="Size (Optional)" name="productSize">
+              <Form.Item
+                label="Type"
+                name="productType"
+                rules={[{ required: true, message: "Product Type required!" }]}
+              >
                 <Input
-                  placeholder="1kg"
+                  placeholder="Enter your product Type"
+                  className="bg-black border-none h-12 text-slate-300"
+                />
+              </Form.Item>
+
+              <Form.Item label="Scent" name="productScent">
+                <Input
+                  placeholder="Enter your product Scent"
                   className="bg-black border-none h-12 text-slate-300"
                 />
               </Form.Item>
@@ -136,6 +171,16 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
 
             {/* Right Section (Upload) */}
             <div className="w-1/2 flex flex-col ">
+              <Form.Item
+                label="Product Price"
+                name="productPrice"
+                rules={[{ required: true, message: "Product Price required!" }]}
+              >
+                <Input
+                  placeholder="Enter your product Price"
+                  className="bg-black border-none h-12 text-slate-300"
+                />
+              </Form.Item>
               <Form.Item
                 label="Product Descriptions"
                 name="productDescription"
@@ -147,8 +192,13 @@ function AddProductModal({ isModalOpen, setIsModalOpen }) {
                 ]}
               >
                 <Input.TextArea
-                  style={{ resize: "none", height: "175px" }} // Ensures it is non-resizable
-                  placeholder="Write product description"
+                  style={{
+                    resize: "none",
+                    height: "175px",
+                    overflowY: "scroll",
+                    scrollbarWidth: "none",
+                  }} // Ensures it is non-resizable
+                  placeholder="Write your product Description"
                   className="border-none text-slate-300"
                 />
               </Form.Item>
