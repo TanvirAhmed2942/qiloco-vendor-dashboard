@@ -13,12 +13,12 @@ const ResetPassword = () => {
   return (
     <div>
       <div className="text-center mb-12">
-        <h1 className="text-[25px] text-white font-semibold mb-6">
+        <h1 className="text-[25px] text-white font-semibold mb-2">
           Set a new password
         </h1>
-        <p className="text-[#C0C7CA] text-[18px]">
-          Create a new password. Ensure it differs
-          <br /> from previous ones for security.
+        <p className="text-[#C0C7CA] ">
+          Create a new password. Ensure it differs from previous ones for
+          security.
         </p>
       </div>
       <ConfigProvider
