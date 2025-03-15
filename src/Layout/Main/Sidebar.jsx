@@ -37,7 +37,7 @@ const Sidebar = ({ isCollapsed }) => {
       key: "/product-list",
       icon: <LuBoxes size={25} />,
       label: isCollapsed ? (
-        <Link to="/product-list"></Link>
+        <Link to="/product-list">Product List</Link>
       ) : (
         <Link to="/product-list">Product List</Link>
       ),
@@ -140,7 +140,8 @@ const Sidebar = ({ isCollapsed }) => {
         selectedKeys={[selectedKey]}
         style={{ background: "#232323" }}
         items={menuItems}
-        className="text-white mt-10"
+        className="text-white mt-10 "
+        inlineCollapsed={isCollapsed}
       />
     </div>
   );
